@@ -6,11 +6,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: "About", href: "#about" },
-    { name: "Team", href: "#team" },
-    { name: "Deliver", href: "#deliver" },
-    { name: "Solutions", href: "#solutions" },
-  ];
+  { name: "About", href: "#about" },           // works
+  { name: "Team", href: "#principal" },       // goes to Principal
+  { name: "Deliver", href: "#team" },         // goes to Team
+  { name: "Services", href: "#services"} // goes to ServicesGrid
+];
+
 
   return (
     <nav className="sticky top-0 w-full text-white shadow-lg z-50">

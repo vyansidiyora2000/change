@@ -6,14 +6,14 @@ import NovaScotiaLogo from "../assets/novascotia.png";
 // Data
 const flagshipCustomers = [
   {
-    name: "Daiichi Sankyo",
+
     logo: DaiichiLogo,
-    desc: "Digital Strategy & Innovation, Global Oncology Medical Affairs Organization",
+   
   },
   {
-    name: "Nova Scotia Health Authority",
+    // name: "Nova Scotia Health Authority",
     logo: NovaScotiaLogo,
-    desc: "One Person One Record Program",
+    // desc: "One Person One Record Program",
   },
 ];
 

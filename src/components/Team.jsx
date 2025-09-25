@@ -10,6 +10,7 @@ import {
   Settings,
   UserCheck,
 } from "lucide-react";
+import "./flip.css"; // Make sure this path is correct
 
 export default function Team() {
   const skills = [
@@ -17,46 +18,54 @@ export default function Team() {
       name: "Organizational Change Management",
       icon: ClipboardList,
       color: "bg-purple-200 text-purple-700",
+      desc: "Helping organizations transition smoothly with tailored change management strategies.",
     },
     {
       name: "Project Management",
       icon: Users,
       color: "bg-purple-200 text-purple-700",
+      desc: "Delivering successful projects on time, within scope, and on budget.",
     },
     {
       name: "Business Process Optimization",
       icon: Monitor,
       color: "bg-purple-200 text-purple-700",
+      desc: "Streamlining workflows for improved efficiency and productivity.",
     },
     {
       name: "Specialized Healthcare Services",
       icon: Heart,
       color: "bg-pink-200 text-pink-700",
+      desc: "Providing tailored healthcare consulting and operational expertise.",
     },
     {
       name: "Healthcare Analytics",
       icon: BarChart2,
       color: "bg-indigo-200 text-indigo-700",
+      desc: "Unlocking insights through data-driven healthcare analytics solutions.",
     },
     {
       name: "Strategic Consulting",
       icon: Cpu,
       color: "bg-yellow-200 text-yellow-700",
+      desc: "Guiding organizations with strategy and execution in digital transformation.",
     },
     {
       name: "Process Optimization",
       icon: Settings,
       color: "bg-green-200 text-green-700",
+      desc: "Identifying bottlenecks and implementing best practices for efficiency.",
     },
     {
       name: "Leadership Training",
       icon: UserCheck,
       color: "bg-teal-200 text-teal-700",
+      desc: "Empowering leaders with skills to drive cultural and digital change.",
     },
   ];
 
   return (
-    <section className="relative py-24 bg-[#5C1BD9] overflow-hidden">
+    <section id="team" className="relative py-24 bg-[#5C1BD9] overflow-hidden">
       {/* World Map Background */}
       <div className="absolute inset-0">
         <img
@@ -64,7 +73,7 @@ export default function Team() {
           alt="World Map"
           className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-[#5C1BD9]/40"></div> {/* subtle overlay */}
+        <div className="absolute inset-0 bg-[#5C1BD9]/40"></div>
       </div>
 
       <div className="relative z-10 text-center mb-16">
@@ -77,27 +86,34 @@ export default function Team() {
           Why Choose Change Architects Inc.?
         </motion.h2>
         <p className="mt-4 text-gray-200 text-lg md:text-xl">
-      
-Our mission is to architect successful human-centric digital and cultural change in these ever-evolving times of AI transformation.
-
-With a blend of highly skilled business and technical resources across the globe, we offer comprehensive expertise to guide your organization through complex transformations.
+          Our mission is to architect successful human-centric digital and cultural change in these ever-evolving times of AI transformation.
+          <br />
+          With a blend of highly skilled business and technical resources across the globe, we offer comprehensive expertise to guide your organization through complex transformations.
         </p>
       </div>
 
+      {/* Flip Cards */}
       <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
         {skills.map((skill, idx) => {
           const Icon = skill.icon;
           return (
-            <motion.div
-              key={idx}
-              className="flex flex-col items-center p-6 bg-white/90 backdrop-blur-md border border-purple-300 rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className={`p-4 rounded-full mb-4 shadow-md ${skill.color}`}>
-                <Icon className="h-10 w-10" />
+            <div key={idx} className="flip-card w-64 h-64 mx-auto">
+              <div className="flip-card-inner">
+                {/* Front */}
+                <div className="flip-card-front flex flex-col items-center justify-center p-6 bg-white/90 border border-purple-300 rounded-xl shadow-lg">
+                  <div className={`p-4 rounded-full mb-4 shadow-md ${skill.color}`}>
+                    <Icon className="h-10 w-10" />
+                  </div>
+                  <h3 className="text-gray-900 font-semibold text-center">{skill.name}</h3>
+                </div>
+
+                {/* Back */}
+                <div className="flip-card-back flex flex-col items-center justify-center p-6 bg-gradient-to-br from-purple-600 to-indigo-600 text-white border border-purple-300 rounded-xl shadow-lg">
+                  <h3 className="font-bold text-lg mb-2">{skill.name}</h3>
+                  <p className="text-sm text-center">{skill.desc}</p>
+                </div>
               </div>
-              <h3 className="text-gray-900 font-semibold text-center">{skill.name}</h3>
-            </motion.div>
+            </div>
           );
         })}
       </div>
