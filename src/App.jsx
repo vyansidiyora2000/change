@@ -338,7 +338,7 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Team from "./components/team";
+import Team from "./components/Team";
 import Deliver from "./components/Deliver";
 import Solutions from "./components/Solution";
 import Footer from "./components/Footer";
