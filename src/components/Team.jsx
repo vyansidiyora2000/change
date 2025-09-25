@@ -24,7 +24,7 @@ export default function Team() {
       color: "bg-purple-200 text-purple-700",
     },
     {
-      name: "Digital Enablement",
+      name: "Business Process Optimization",
       icon: Monitor,
       color: "bg-purple-200 text-purple-700",
     },
@@ -74,10 +74,14 @@ export default function Team() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Our Team
+          The Change Architects Advantage
         </motion.h2>
         <p className="mt-4 text-gray-200 text-lg md:text-xl">
-          Our people are highly skilled and experienced globally.
+       Change Architects Inc. is a Nova Scotian company providing consulting and advisory services for Life Sciences and Healthcare organizations globally.
+
+Our mission is to architect successful human-centric digital and cultural change in these ever-evolving times of AI transformation.
+
+With a blend of highly skilled business and technical resources across the globe, we offer comprehensive expertise to guide your organization through complex transformations.
         </p>
       </div>
 
