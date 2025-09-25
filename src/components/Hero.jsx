@@ -73,10 +73,14 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="bg-[#3B0CA3] text-white py-16 md:py-24 relative overflow-hidden"
+      className="relative overflow-hidden py-16 md:py-24"
     >
+      {/* Purple Gradient Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#2B0A66] to-[#3B0CA3]"></div>
+      <div className="absolute inset-0 -z-0 bg-purple-900/20"></div>
+
       <motion.div
-        className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6"
+        className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10"
         variants={container}
         initial="hidden"
         animate="show"
@@ -84,10 +88,10 @@ export default function Hero() {
         {/* Left Text */}
         <div className="text-center md:text-left max-w-xl">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold leading-tight"
+            className="text-4xl md:text-6xl font-bold leading-tight text-white"
             variants={item}
           >
-            The <span className="text-yellow-300 whitespace-nowrap">Change Architects</span> Advantage
+            The <span className="text-sky-400 whitespace-nowrap">Change Architects</span> Advantage
           </motion.h1>
           <motion.p
             className="mt-4 text-lg md:text-2xl text-gray-200"
@@ -113,7 +117,7 @@ export default function Hero() {
           animate={{
             opacity: 1,
             scale: 1,
-            y: [0, -10, 0], // floating
+            y: [0, -10, 0], // floating effect
           }}
           transition={{
             duration: 2,
