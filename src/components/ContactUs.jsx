@@ -31,11 +31,11 @@ export default function ContactUs() {
             </div>
             <div className="flex items-center space-x-3">
               <Phone className="w-6 h-6 text-yellow-300" />
-              <span>+1 (234) 567-890</span>
+              <span>+425.326.2529</span>
             </div>
             <div className="flex items-center space-x-3">
               <Mail className="w-6 h-6 text-yellow-300" />
-              <span>info@changearchitects.com</span>
+              <span>swetha@change-architects.com</span>
             </div>
           </div>
         </motion.div>
