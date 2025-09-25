@@ -74,11 +74,10 @@ export default function Team() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          The Change Architects Advantage
+          Why Choose Change Architects Inc.?
         </motion.h2>
         <p className="mt-4 text-gray-200 text-lg md:text-xl">
-       Change Architects Inc. is a Nova Scotian company providing consulting and advisory services for Life Sciences and Healthcare organizations globally.
-
+      
 Our mission is to architect successful human-centric digital and cultural change in these ever-evolving times of AI transformation.
 
 With a blend of highly skilled business and technical resources across the globe, we offer comprehensive expertise to guide your organization through complex transformations.
