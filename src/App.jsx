@@ -11,7 +11,7 @@ import ContactUs from "./components/ContactUs";
 import ServicesGrid from "./components/ServicesGrid";
 import Principal from "./components/Principal";
 import TrustedSection from "./components/TrustedSection";
-import PlatformsGrid from "./components/Platforms";
+
 export default function App() {
   return (
     <div className="font-sans antialiased text-gray-900 scroll-smooth">
@@ -25,7 +25,7 @@ export default function App() {
               
       <TrustedSection />
       <Principal/>
-      <PlatformsGrid/>    
+     
      
    
       <ContactUs />

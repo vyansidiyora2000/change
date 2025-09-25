@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "../assets/sharp_logo-removebg-preview.png"; // 👈 import your logo
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,10 +19,17 @@ export default function Navbar() {
       <div className="absolute inset-0 -z-0 bg-purple-900/20"></div>
 
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-10">
-        {/* Brand */}
-        <h1 className="text-xl md:text-2xl font-bold text-white">
-          Change Architects Inc.
-        </h1>
+        {/* Logo + Brand */}
+        <div className="flex items-center gap-3">
+          <img
+            src={Logo}
+            alt="Change Architects Logo"
+            className="w-10 h-10 object-contain"
+          />
+          <h1 className="text-xl md:text-2xl font-bold text-white">
+            Change Architects Inc.
+          </h1>
+        </div>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex space-x-8 font-medium">
