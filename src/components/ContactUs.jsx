@@ -1,13 +1,132 @@
-import React from "react";
+// import React from "react";
+// import { motion } from "framer-motion";
+// import { Mail, Phone, MapPin } from "lucide-react";
+
+// export default function ContactUs() {
+//   return (
+//     <section
+//       id="contact"
+//       className="relative bg-gradient-to-br from-[#3B0CA3] via-purple-800 to-[#1E0B57] py-20 px-6 text-white"
+//     >
+//       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+//         {/* Left: Company Info */}
+//         <motion.div
+//           initial={{ opacity: 0, x: -50 }}
+//           animate={{ opacity: 1, x: 0 }}
+//           transition={{ duration: 0.8 }}
+//           className="space-y-6"
+//         >
+//           <h2 className="text-4xl md:text-5xl font-bold">
+//             Let’s Build the Future Together
+//           </h2>
+//           <p className="text-gray-200 text-lg">
+//             Have questions or ideas? Reach out to us and our team will connect
+//             with you shortly.
+//           </p>
+
+//           <div className="space-y-4">
+//             <div className="flex items-center space-x-3">
+//               <MapPin className="w-6 h-6 text-yellow-300" />
+//               <span>123 Innovation Drive, Halifax, NS</span>
+//             </div>
+//             <div className="flex items-center space-x-3">
+//               <Phone className="w-6 h-6 text-yellow-300" />
+//               <span>+425.326.2529</span>
+//             </div>
+//             <div className="flex items-center space-x-3">
+//               <Mail className="w-6 h-6 text-yellow-300" />
+//               <span>swetha@change-architects.com</span>
+//             </div>
+//           </div>
+//         </motion.div>
+
+//         {/* Right: Contact Form */}
+//         <motion.form
+//           initial={{ opacity: 0, x: 50 }}
+//           animate={{ opacity: 1, x: 0 }}
+//           transition={{ duration: 0.8 }}
+//           className="bg-white rounded-2xl shadow-xl p-8 text-gray-900 space-y-6"
+//         >
+//           <div>
+//             <label className="block text-sm font-semibold">Name</label>
+//             <input
+//               type="text"
+//               placeholder="Your name"
+//               className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
+//             />
+//           </div>
+
+//           <div>
+//             <label className="block text-sm font-semibold">Email</label>
+//             <input
+//               type="email"
+//               placeholder="you@example.com"
+//               className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
+//             />
+//           </div>
+
+//           <div>
+//             <label className="block text-sm font-semibold">Subject</label>
+//             <input
+//               type="text"
+//               placeholder="Subject"
+//               className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
+//             />
+//           </div>
+
+//           <div>
+//             <label className="block text-sm font-semibold">Message</label>
+//             <textarea
+//               rows="5"
+//               placeholder="Write your message..."
+//               className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none resize-none"
+//             ></textarea>
+//           </div>
+
+//           <motion.button
+//             type="submit"
+//             className="w-full bg-[#3B0CA3] text-white py-3 px-6 rounded-full font-semibold shadow hover:bg-purple-900 transition"
+//             whileHover={{ scale: 1.05 }}
+//             whileTap={{ scale: 0.95 }}
+//           >
+//             Send Message
+//           </motion.button>
+//         </motion.form>
+//       </div>
+//     </section>
+//   );
+// }
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
+import axios from "axios";
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/send-email", formData);
+      alert("✅ Message sent successfully!");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      console.error("❌ Error:", err.response?.data || err.message);
+      alert("❌ Failed to send message. Try again later.");
+    }
+  };
+
   return (
-    <section
-      id="contact"
-      className="relative bg-gradient-to-br from-[#3B0CA3] via-purple-800 to-[#1E0B57] py-20 px-6 text-white"
-    >
+    <section className="bg-gradient-to-br from-[#3B0CA3] via-purple-800 to-[#1E0B57] py-20 px-6 text-white">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left: Company Info */}
         <motion.div
@@ -23,7 +142,6 @@ export default function ContactUs() {
             Have questions or ideas? Reach out to us and our team will connect
             with you shortly.
           </p>
-
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <MapPin className="w-6 h-6 text-yellow-300" />
@@ -42,47 +160,38 @@ export default function ContactUs() {
 
         {/* Right: Contact Form */}
         <motion.form
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className="bg-white rounded-2xl shadow-xl p-8 text-gray-900 space-y-6"
         >
-          <div>
-            <label className="block text-sm font-semibold">Name</label>
-            <input
-              type="text"
-              placeholder="Your name"
-              className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold">Email</label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold">Subject</label>
-            <input
-              type="text"
-              placeholder="Subject"
-              className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
-            />
-          </div>
-
+          {["name", "email", "subject"].map((field) => (
+            <div key={field}>
+              <label className="block text-sm font-semibold">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+              <input
+                type={field === "email" ? "email" : "text"}
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none"
+                placeholder={`Enter your ${field}`}
+                required
+              />
+            </div>
+          ))}
           <div>
             <label className="block text-sm font-semibold">Message</label>
             <textarea
               rows="5"
-              placeholder="Write your message..."
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               className="mt-2 w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#3B0CA3] outline-none resize-none"
-            ></textarea>
+              placeholder="Write your message..."
+              required
+            />
           </div>
-
           <motion.button
             type="submit"
             className="w-full bg-[#3B0CA3] text-white py-3 px-6 rounded-full font-semibold shadow hover:bg-purple-900 transition"
